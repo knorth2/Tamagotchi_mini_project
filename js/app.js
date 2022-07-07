@@ -61,10 +61,22 @@ const bug = new Bug('Ziggy Bug')
   console.log(bug)
 
 
+//---Add event listeners to buttons: start, hunger(feed me), sleepiness(nap time), boredom(play time) using the class.
+
+let startButton = document.querySelector('.startButton');
+
+let hungerButton = document.querySelector('.feedText');
+let hungerScore = document.querySelector('.hungerScoreText');
+
+let sleepinessButton = document.querySelector('.sleepText');
+let sleepinessScore = document.querySelector('.sleepScoreText')
+
+let playButton = document.querySelector('.playText');
+let boredomScore = document.querySelector('.boredomScoreText');
 
 
 
-//---Add event listener to start button and call functions
+//call functions
 
 
 

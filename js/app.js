@@ -17,25 +17,30 @@
 
 
 //Global variables
-const startTime = 120;
-let time = startTime;
-let age = 1;
+// const startTime = 120;
+// let time = startTime;
+// let age = 1;
 
 //Parent Class - instantiate from parent class and make methods
 
 class Character{
-    constructor(name, hunger, sleepiness, boredom){
+    constructor(name, hunger, sleepiness, boredom, age){
         this.name = name;
         this.hunger = hunger;
         this.sleepiness = sleepiness;
-        this.boredom = boredom
+        this.boredom = boredom;
+        this.age = age;
     }
 }
 
 class Bug extends Character{
-    constructor(name, hunger, sleepiness, boredom){
-        super(name, hunger, sleepiness, boredom)
-        //might put animations here? this.animations
+    constructor(name, hunger, sleepiness, boredom, age){
+        super(name, hunger, sleepiness, boredom, age)
+        this.name = name;
+        this.hunger = 10;
+        this.sleepiness = 10;
+        this.boredom = 10;
+        this.age = 1;
     }
     feed(){
         this.hunger++
@@ -46,16 +51,23 @@ class Bug extends Character{
     play(){
         this.boredom++
     }
+    //Intro to the Game.
+
+    nameBug(promptName){
+    this.name = prompt('Welcome to Bugs Life! To keep your bug alive, click the buttons to feed, play or rest your little friend. The buttons will go up one point for every 10secs! If any of the buttons reaches 10 your bug will die. So the more you interact with your bug the greater the chance you will keep it alive! Some features of this game include your bug morphing when the timer reaches 0. To proceed please type a name for your bug below and click ok.')
+    }
 }
-const Bug = new Bug
-  
+const bug = new Bug('Ziggy Bug')
+  console.log(bug)
 
 
-//Intro to the Game.
-// nameBug(promptName){
-//     this.name = prompt('Welcome to Bugs Life! To keep your bug alive, click the buttons to feed, play or rest your little friend. The buttons will go up one point for every minute! If any of the buttons reaches 10 your bug will die. So the more you interact with your bug the greater the chance you will keep it alive! Some features of this game include your bug morphing when the timer reaches 0. To proceed please type a name for your bug below and click ok.')
-// }
-// const Character = new Character ('Ziggy Bug')
+
+
+
+//---Add event listener to start button and call functions
+
+
+
 
 
 

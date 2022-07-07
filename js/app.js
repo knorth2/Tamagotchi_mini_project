@@ -5,7 +5,7 @@
 
 //Create buttons to keep bug alive, hunger, play, sleep(lights on/off) with a 1-10 scale.  There will also be metrics keeping track of hunger, sleepiness, play/boredom, and age. 
 
-//Create object with functions/methods with if/else if statements.
+//Create object with functions/methods with if/else if statements?
 
 //Morphing will require bug to stay alive for how long? 120secs? Bug will die if hunger, play, and sleepiness hits 10.
 
@@ -15,11 +15,10 @@
 
 //Game ends when bug dies. Alert bug has died.
 
-
-//Global variables
+// Do i need Global variables?
 // const startTime = 120;
 // let time = startTime;
-// let age = 1;
+
 
 //Parent Class - instantiate from parent class and make methods
 
@@ -36,7 +35,7 @@ class Character{
 class Bug extends Character{
     constructor(name, hunger, sleepiness, boredom, age){
         super(name, hunger, sleepiness, boredom, age)
-        this.name = name;
+        this.name = '';
         this.hunger = 10;
         this.sleepiness = 10;
         this.boredom = 10;
@@ -53,15 +52,15 @@ class Bug extends Character{
     }
     //Intro to the Game.
 
-    nameBug(promptName){
-    this.name = prompt('Welcome to Bugs Life! To keep your bug alive, click the buttons to feed, play or rest your little friend. The buttons will go up one point for every 10secs! If any of the buttons reaches 10 your bug will die. So the more you interact with your bug the greater the chance you will keep it alive! Some features of this game include your bug morphing when the timer reaches 0. To proceed please type a name for your bug below and click ok.')
+     nameBug(promptName){
+    this.name = prompt('Welcome to Bugs Life! To keep your bug alive, click the buttons to feed, play or rest your little friend. The buttons will go up one point for every 5secs! If any of the buttons reaches 10 your bug will die. So the more you interact with your bug the greater the chance you will keep it alive! Some features of this game include your bug morphing when the timer reaches 0. To proceed please type a name for your bug below and click ok.')
     }
 }
-const bug = new Bug('Ziggy Bug')
+const bug = new Bug('')
   console.log(bug)
 
 
-//---Add event listeners to buttons: start, hunger(feed me), sleepiness(nap time), boredom(play time) using the class.
+ //Create variable using DOM Selections targeting class
 
 let startButton = document.querySelector('.startButton');
 
@@ -74,7 +73,24 @@ let sleepinessScore = document.querySelector('.sleepScoreText')
 let playButton = document.querySelector('.playText');
 let boredomScore = document.querySelector('.boredomScoreText');
 
+//---Add event listeners to buttons: start, hunger(feed me), sleepiness(nap time), boredom(play time) using variable created above.
 
+startButton.addEventListener('click', () =>{
+    this.name = prompt('Welcome to Bugs Life! To keep your bug alive, click the buttons to feed, play or rest your little friend. The numbers will go down one point every few seconds.  If any of the buttons reaches 0 your bug will die. So the more you interact with your bug the greater the chance you will keep it alive! Some features of this game include your bug morphing when you reach a certain age. To proceed please type a name for your bug below and click ok.')
+     
+})
+
+hungerButton.addEventListener('click', () =>{
+    console.log(hungerScore = bug.hunger)
+})
+
+sleepinessButton.addEventListener('click', () =>{
+    console.log(sleepinessScore = bug.sleepiness)
+})
+
+playButton.addEventListener('click', () =>{
+    console.log(boredomScore = bug.boredom)
+})
 
 //call functions
 

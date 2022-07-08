@@ -56,13 +56,14 @@ class Bug extends Character{
     this.name = prompt('Welcome to Bugs Life! To keep your bug alive, click the buttons to feed, play or rest your little friend. The buttons will go up one point for every 5secs! If any of the buttons reaches 10 your bug will die. So the more you interact with your bug the greater the chance you will keep it alive! Some features of this game include your bug morphing when the timer reaches 0. To proceed please type a name for your bug below and click ok.')
     }
 }
-const bug = new Bug('')
-  console.log(bug)
+const bug = new Bug()
+//   console.log(bug)
 
 
  //Create variable using DOM Selections targeting class
 
 let startButton = document.querySelector('.startButton');
+let statsButton = document.querySelector('.statsBox')
 
 let hungerButton = document.querySelector('.feedText');
 let hungerScore = document.querySelector('.hungerScoreText');
@@ -81,7 +82,15 @@ startButton.addEventListener('click', () =>{
 })
 
 hungerButton.addEventListener('click', () =>{
-    console.log(hungerScore = bug.hunger)
+        bug.feed();
+        const timer = setInterval(() =>{
+         console.log(hungerScore.innerText = bug.hunger)
+        bug.hunger --
+        if(bug.hunger === 0){
+            alert('Your bug died of starvation!')
+            clearInterval(timer)
+        }
+    }, 5000)
 })
 
 sleepinessButton.addEventListener('click', () =>{

@@ -60,7 +60,7 @@ class Bug extends Character{
 }
 
 //Create instance
-const bug = new Bug('', 10, 10, 10, 1)
+const bug = new Bug()
 //   console.log(bug)
 
 
@@ -87,45 +87,48 @@ const game = {  //created functions around events and put them in an object for 
 
 
 setHunger(){
-hungerButton.addEventListener('click', () =>{
-        bug.feed();
         const timer = setInterval(() =>{
-         console.log(hungerScore.innerText = bug.hunger)
+        hungerScore.innerText = bug.hunger
         bug.hunger --
         if(bug.hunger === 0){
             alert('Your bug died of starvation!')
             clearInterval(timer)  //How to stop others stop running when one hits 0?
             }
     }, 5000)
+    hungerButton.addEventListener('click', () =>{ //put eventlistener outside of setInterval function so it starts counting without having to click the button.
+        bug.feed();
+        console.log(bug.hunger)
 })
 },
 
+
 setSleepiness(){
-sleepinessButton.addEventListener('click', () =>{
-        bug.sleep();
-        //document.body.style.backgroundImage = 
         const timer = setInterval(() =>{
-        console.log(sleepinessScore.innerText = bug.sleepiness)
+       sleepinessScore.innerText = bug.sleepiness
         bug.sleepiness --
         if(bug.sleepiness === 0){
             alert('Your bug died from sleepiness!')
             clearInterval(timer)
           } 
-    }, 5000)    
+    }, 5000) 
+    sleepinessButton.addEventListener('click', () =>{
+        bug.sleep();
+        document.body.style.backgroundImage = "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWRNqaYiwPCb5rWeCmsOuEDCh7NL6M2j7N40PLeNU4L_dOmpHk4Y6Qg5wSrZCajFIrbEU&usqp=CAU')"   
 })
 },
 
 setPlay(){
-playButton.addEventListener('click', () =>{
-        bug.play();
         const timer = setInterval(() =>{
-        console.log(boredomScore.innerText = bug.boredom)
+        boredomScore.innerText = bug.boredom
         bug.boredom --
         if(bug.boredom === 0){
             alert('Your bug died from boredom!')
             clearInterval(timer)
             }
     }, 5000)
+    playButton.addEventListener('click', () =>{
+        bug.play();
+        document.body.style.backgroundImage = "url('https://images.unsplash.com/photo-1627655045499-9b1cdc0f25a8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80')"
    
 })
 },
@@ -156,8 +159,10 @@ this.setPlay()
 this.setAgeUp()
  }
 }
+console.log(game)
 
 //Link your functions together so they can all be called at once within your object with the startButton.
+
 startButton.addEventListener('click', (event) =>{
     this.name = prompt('Welcome to Bugs Life! To keep your bug alive, click the buttons to feed, play or rest your little friend. The numbers will go down one point every few seconds.  If any of the buttons reaches 0 your bug will die. So the more you interact with your bug the greater the chance you will keep it alive! Some features of this game include your bug morphing when you reach a certain age. To proceed please type a name for your bug below and click ok.')
     alert(`Hello, ${this.name}!`)

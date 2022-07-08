@@ -39,7 +39,7 @@ class Bug extends Character{
         this.hunger = 10;
         this.sleepiness = 10;
         this.boredom = 10;
-        this.age = 1;
+        this.age = 0;
     }
     feed(){
         this.hunger++
@@ -50,12 +50,17 @@ class Bug extends Character{
     play(){
         this.boredom++
     }
-    //Intro to the Game.
 
-     nameBug(promptName){
-    this.name = prompt('Welcome to Bugs Life! To keep your bug alive, click the buttons to feed, play or rest your little friend. The buttons will go up one point for every 5secs! If any of the buttons reaches 10 your bug will die. So the more you interact with your bug the greater the chance you will keep it alive! Some features of this game include your bug morphing when the timer reaches 0. To proceed please type a name for your bug below and click ok.')
+     nameBug(){
+        this.name 
+    
     }
+    // ageUp(){
+    //     this.age++
+    // }
 }
+
+//Create instance
 const bug = new Bug()
 //   console.log(bug)
 
@@ -74,11 +79,14 @@ let sleepinessScore = document.querySelector('.sleepScoreText')
 let playButton = document.querySelector('.playText');
 let boredomScore = document.querySelector('.boredomScoreText');
 
+let ageIncrease = document.querySelector('.ageText');
+
+
 //---Add event listeners to buttons: start, hunger(feed me), sleepiness(nap time), boredom(play time) using variable created above.
 
 startButton.addEventListener('click', () =>{
     this.name = prompt('Welcome to Bugs Life! To keep your bug alive, click the buttons to feed, play or rest your little friend. The numbers will go down one point every few seconds.  If any of the buttons reaches 0 your bug will die. So the more you interact with your bug the greater the chance you will keep it alive! Some features of this game include your bug morphing when you reach a certain age. To proceed please type a name for your bug below and click ok.')
-     
+    alert(`Hello, ${this.name}!`)
 })
 
 hungerButton.addEventListener('click', () =>{
@@ -123,6 +131,20 @@ playButton.addEventListener('click', () =>{
     }, 1000)
    
 })
+
+const timer = setInterval(() =>{
+        ageIncrease.innerText = `${bug.age}`
+        bug.age++
+        if(bug.age == 8){
+            alert('your caterpillar is now a chrysalis!')
+            //document.querySelector('.pet').src =  photo of a chrysalis 
+        }
+        if(bug.age == 15){
+            alert('your chrysalis is now a butterfly!')
+            //document.querySelector('.pet).src = photo of butterfly
+        }
+
+}, 3000)
 
 //call functions
 

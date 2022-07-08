@@ -96,7 +96,7 @@ hungerButton.addEventListener('click', () =>{
             alert('Your bug died of starvation!')
             clearInterval(timer)  //How to stop others stop running when one hits 0?
             }
-    }, 1000)
+    }, 5000)
 })
 },
 
@@ -111,7 +111,7 @@ sleepinessButton.addEventListener('click', () =>{
             alert('Your bug died from sleepiness!')
             clearInterval(timer)
           } 
-    }, 1000)    
+    }, 5000)    
 })
 },
 
@@ -125,7 +125,7 @@ playButton.addEventListener('click', () =>{
             alert('Your bug died from boredom!')
             clearInterval(timer)
             }
-    }, 1000)
+    }, 5000)
    
 })
 },
@@ -136,15 +136,15 @@ const timer = setInterval(() =>{
         bug.age++
         if(bug.age == 8){
             alert('your caterpillar is now a chrysalis!')
-            //document.querySelector('.pet').src =  photo of a chrysalis 
+            document.querySelector('.bug').src = "https://icon2.cleanpng.com/20180604/lbc/kisspng-butterfly-drawing-pupa-coloring-book-5b15945cbeb974.5614540115281408927812.jpg" 
         }
         if(bug.age == 15){
             alert('your chrysalis is now a butterfly!')
-            //document.querySelector('.pet).src = photo of butterfly
+            document.querySelector('.bug').src = "https://png.pngitem.com/pimgs/s/129-1291141_happy-new-year-butterfly-hd-png-download.png"
         }
         else if(bug.boredom === 0 || bug.hunger === 0 || bug.sleepiness === 0) //stop age once bug dies
             clearInterval(timer)
-}, 3000)
+}, 2000)
 },
 
 //call functions 

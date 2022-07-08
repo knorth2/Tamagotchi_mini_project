@@ -30,6 +30,7 @@ class Character{
         this.boredom = boredom;
         this.age = age;
     }
+ 
 }
 
 class Bug extends Character{
@@ -39,7 +40,7 @@ class Bug extends Character{
         this.hunger = 10;
         this.sleepiness = 10;
         this.boredom = 10;
-        this.age = 0;
+        this.age = 1;
     }
     feed(){
         this.hunger++
@@ -55,13 +56,11 @@ class Bug extends Character{
         this.name 
     
     }
-    // ageUp(){
-    //     this.age++
-    // }
+    
 }
 
 //Create instance
-const bug = new Bug()
+const bug = new Bug('', 10, 10, 10, 1)
 //   console.log(bug)
 
 
@@ -84,11 +83,10 @@ let ageIncrease = document.querySelector('.ageText');
 
 //---Add event listeners to buttons: start, hunger(feed me), sleepiness(nap time), boredom(play time) using variable created above.
 
-startButton.addEventListener('click', () =>{
-    this.name = prompt('Welcome to Bugs Life! To keep your bug alive, click the buttons to feed, play or rest your little friend. The numbers will go down one point every few seconds.  If any of the buttons reaches 0 your bug will die. So the more you interact with your bug the greater the chance you will keep it alive! Some features of this game include your bug morphing when you reach a certain age. To proceed please type a name for your bug below and click ok.')
-    alert(`Hello, ${this.name}!`)
-})
+const game = {  //created functions around events and put them in an object for easier accessibility. 
 
+
+setHunger(){
 hungerButton.addEventListener('click', () =>{
         bug.feed();
         const timer = setInterval(() =>{
@@ -96,13 +94,13 @@ hungerButton.addEventListener('click', () =>{
         bug.hunger --
         if(bug.hunger === 0){
             alert('Your bug died of starvation!')
-            clearInterval(timer)
-
-            // document.querySelectorAll('button').disabled = false; //How to stop others stop running when one hits 0?
-        }
-    }, 5000)
+            clearInterval(timer)  //How to stop others stop running when one hits 0?
+            }
+    }, 1000)
 })
+},
 
+setSleepiness(){
 sleepinessButton.addEventListener('click', () =>{
         bug.sleep();
         //document.body.style.backgroundImage = 
@@ -112,14 +110,12 @@ sleepinessButton.addEventListener('click', () =>{
         if(bug.sleepiness === 0){
             alert('Your bug died from sleepiness!')
             clearInterval(timer)
-            // document.querySelector('button').disabled = false;
-          
-        } 
-    }, 5000)
-    
-    
+          } 
+    }, 1000)    
 })
+},
 
+setPlay(){
 playButton.addEventListener('click', () =>{
         bug.play();
         const timer = setInterval(() =>{
@@ -128,12 +124,13 @@ playButton.addEventListener('click', () =>{
         if(bug.boredom === 0){
             alert('Your bug died from boredom!')
             clearInterval(timer)
-            // document.querySelector('button').disabled = false;
-        }
-    }, 5000)
+            }
+    }, 1000)
    
 })
+},
 
+setAgeUp(){
 const timer = setInterval(() =>{
         ageIncrease.innerText = `${bug.age}`
         bug.age++
@@ -145,10 +142,32 @@ const timer = setInterval(() =>{
             alert('your chrysalis is now a butterfly!')
             //document.querySelector('.pet).src = photo of butterfly
         }
-
+        else if(bug.boredom === 0 || bug.hunger === 0 || bug.sleepiness === 0) //stop age once bug dies
+            clearInterval(timer)
 }, 3000)
+},
 
-//call functions
+//call functions 
+
+startGame(){
+this.setHunger()
+this.setSleepiness()
+this.setPlay()
+this.setAgeUp()
+ }
+}
+
+//Link your functions together so they can all be called at once within your object with the startButton.
+startButton.addEventListener('click', (event) =>{
+    this.name = prompt('Welcome to Bugs Life! To keep your bug alive, click the buttons to feed, play or rest your little friend. The numbers will go down one point every few seconds.  If any of the buttons reaches 0 your bug will die. So the more you interact with your bug the greater the chance you will keep it alive! Some features of this game include your bug morphing when you reach a certain age. To proceed please type a name for your bug below and click ok.')
+    alert(`Hello, ${this.name}!`)
+    event.target.disabled = true; //turn off start button
+    game.startGame()
+})
+
+
+
+
 
 
 

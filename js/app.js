@@ -100,11 +100,12 @@ hungerButton.addEventListener('click', () =>{
 
             // document.querySelectorAll('button').disabled = false; //How to stop others stop running when one hits 0?
         }
-    }, 1000)
+    }, 5000)
 })
 
 sleepinessButton.addEventListener('click', () =>{
         bug.sleep();
+        //document.body.style.backgroundImage = 
         const timer = setInterval(() =>{
         console.log(sleepinessScore.innerText = bug.sleepiness)
         bug.sleepiness --
@@ -112,8 +113,9 @@ sleepinessButton.addEventListener('click', () =>{
             alert('Your bug died from sleepiness!')
             clearInterval(timer)
             // document.querySelector('button').disabled = false;
+          
         } 
-    }, 1000)
+    }, 5000)
     
     
 })
@@ -128,7 +130,7 @@ playButton.addEventListener('click', () =>{
             clearInterval(timer)
             // document.querySelector('button').disabled = false;
         }
-    }, 1000)
+    }, 5000)
    
 })
 

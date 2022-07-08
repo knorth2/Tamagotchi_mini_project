@@ -89,16 +89,39 @@ hungerButton.addEventListener('click', () =>{
         if(bug.hunger === 0){
             alert('Your bug died of starvation!')
             clearInterval(timer)
+
+            // document.querySelectorAll('button').disabled = false; //How to stop others stop running when one hits 0?
         }
-    }, 5000)
+    }, 1000)
 })
 
 sleepinessButton.addEventListener('click', () =>{
-    console.log(sleepinessScore = bug.sleepiness)
+        bug.sleep();
+        const timer = setInterval(() =>{
+        console.log(sleepinessScore.innerText = bug.sleepiness)
+        bug.sleepiness --
+        if(bug.sleepiness === 0){
+            alert('Your bug died from sleepiness!')
+            clearInterval(timer)
+            // document.querySelector('button').disabled = false;
+        } 
+    }, 1000)
+    
+    
 })
 
 playButton.addEventListener('click', () =>{
-    console.log(boredomScore = bug.boredom)
+        bug.play();
+        const timer = setInterval(() =>{
+        console.log(boredomScore.innerText = bug.boredom)
+        bug.boredom --
+        if(bug.boredom === 0){
+            alert('Your bug died from boredom!')
+            clearInterval(timer)
+            // document.querySelector('button').disabled = false;
+        }
+    }, 1000)
+   
 })
 
 //call functions

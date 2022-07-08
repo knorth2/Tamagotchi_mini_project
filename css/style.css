@@ -4,6 +4,10 @@ body {
 	background-size: cover;
     	
 }
+@keyframes slidein {
+    from {left: 40%;}
+    to {left: 48%;}
+  }
 
 h1{
 	display: flex;
@@ -12,6 +16,7 @@ h1{
     margin-top: 7%;
     margin-bottom: 7%;
     position: relative;
+  
 }
 .startButton{
 	font-size: 25px;
@@ -26,10 +31,25 @@ h1{
 	font-size: 20px;
 }
 
+#ageDiv{
+    margin-top: 20px;
+    font-size: 25px;
+}
+
 html{
 	text-align: center;
   }
 
  .bug{
-   
+    position: absolute;
+    height: 200px;
+    width: auto;
+    top: 55%;
+    left: 45%;
+    animation-name:  slidein;
+    animation-duration: 3s, 1.5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    
   }
+  

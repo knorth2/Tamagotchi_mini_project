@@ -72,12 +72,12 @@ let ageIncrease = document.querySelector('.ageText');
 
 const game = {
 
-    timerHunger: "",
+    timerHunger: "",        //Created these variables to use as the setInterval method. 
     timerSleepiness: "",
     timerBoredom: "",
 
     setHunger(){
-         timerHunger = setInterval(() =>{ 
+          timerHunger = setInterval(() =>{    // declared it as a key:value pair up above.
             hungerScore.innerText = bug.hunger
             bug.hunger --
         if(bug.hunger === 0){
@@ -85,7 +85,7 @@ const game = {
             document.querySelector('.bug').src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzCc7Ktq4fSdl0OIrtoT30h7NAgVWWPhzMz8LXXSBI2TU5NDwY1Qr8eg0Obh-eaCdMSVU&usqp=CAU"
             clearInterval(timerHunger) 
             clearInterval(timerSleepiness)   
-            clearInterval(timerBoredom)  
+            clearInterval(timerBoredom) 
         }
     }, 4000)
     hungerButton.addEventListener('click', () =>{ //put eventlistener outside of setInterval function so it starts counting without having to click the button.
@@ -97,7 +97,7 @@ const game = {
 
 
     setSleepiness(){
-        timerSleepiness = setInterval(() =>{
+         timerSleepiness = setInterval(() =>{
             sleepinessScore.innerText = bug.sleepiness
             bug.sleepiness --
         
@@ -106,7 +106,7 @@ const game = {
             document.querySelector('.bug').src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzCc7Ktq4fSdl0OIrtoT30h7NAgVWWPhzMz8LXXSBI2TU5NDwY1Qr8eg0Obh-eaCdMSVU&usqp=CAU"
             clearInterval(timerHunger) 
             clearInterval(timerSleepiness)   
-            clearInterval(timerBoredom)   
+            clearInterval(timerBoredom)  
           } 
     }, 4000) 
     sleepinessButton.addEventListener('click', () =>{
@@ -116,7 +116,7 @@ const game = {
 },
 
 setPlay(){
-        timerBoredom = setInterval(() =>{
+         timerBoredom = setInterval(() =>{
             boredomScore.innerText = bug.boredom
             bug.boredom --
         if(bug.boredom === 0){
@@ -124,7 +124,7 @@ setPlay(){
             document.querySelector('.bug').src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzCc7Ktq4fSdl0OIrtoT30h7NAgVWWPhzMz8LXXSBI2TU5NDwY1Qr8eg0Obh-eaCdMSVU&usqp=CAU"
             clearInterval(timerHunger) 
             clearInterval(timerSleepiness)   
-            clearInterval(timerBoredom)  
+            clearInterval(timerBoredom) 
             }
     }, 4000)
     playButton.addEventListener('click', () =>{
@@ -154,8 +154,14 @@ setAgeUp(){
 }, 2000)
 },
 
+// stopTimer(){  //I couldn't resolve how to utilize this function.
+//     clearInterval(timerHunger) 
+//     clearInterval(timerSleepiness)   
+//     clearInterval(timerBoredom) 
+// },
 
-//call functions 
+
+//call/invoke functions to run when the start button is clicked.
 
 startGame(){
 this.setHunger()

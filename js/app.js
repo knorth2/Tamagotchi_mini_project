@@ -51,7 +51,6 @@ const bug = new Bug('', 10, 10, 10, 1)
  //Create variable using DOM Selections targeting class
 
 let startButton = document.querySelector('.startButton');
-let statsButton = document.querySelector('.statsBox')
 
 let hungerButton = document.querySelector('.feedText');
 let hungerScore = document.querySelector('.hungerScoreText');
@@ -65,21 +64,30 @@ let boredomScore = document.querySelector('.boredomScoreText');
 let ageIncrease = document.querySelector('.ageText');
 
 
+
+
 //---Add event listeners to buttons: start, hunger(feed me), sleepiness(nap time), boredom(play time) using variable created above.
 
-const game = {  //created functions around events and put them in an object for easier accessibility. 
+ //created functions around events and put them in an object for easier accessibility. 
 
+const game = {
 
-setHunger(){
-        const timer = setInterval(() =>{
-        hungerScore.innerText = bug.hunger
-        bug.hunger --
+    timerHunger: "",
+    timerSleepiness: "",
+    timerBoredom: "",
+
+    setHunger(){
+         timerHunger = setInterval(() =>{ 
+            hungerScore.innerText = bug.hunger
+            bug.hunger --
         if(bug.hunger === 0){
-            alert('Your bug died of starvation!')
+            alert('Your bug died from starvation!')
             document.querySelector('.bug').src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzCc7Ktq4fSdl0OIrtoT30h7NAgVWWPhzMz8LXXSBI2TU5NDwY1Qr8eg0Obh-eaCdMSVU&usqp=CAU"
-            clearInterval(timer)  //How to stop others stop running when one hits 0?
+            clearInterval(timerHunger) 
+            clearInterval(timerSleepiness)   
+            clearInterval(timerBoredom)  
         }
-    }, 1000)
+    }, 4000)
     hungerButton.addEventListener('click', () =>{ //put eventlistener outside of setInterval function so it starts counting without having to click the button.
         bug.feed();
         //console.log(bug.hunger)
@@ -88,15 +96,19 @@ setHunger(){
 },
 
 
-setSleepiness(){
-        const timer = setInterval(() =>{
-       sleepinessScore.innerText = bug.sleepiness
-        bug.sleepiness --
+    setSleepiness(){
+        timerSleepiness = setInterval(() =>{
+            sleepinessScore.innerText = bug.sleepiness
+            bug.sleepiness --
+        
         if(bug.sleepiness === 0){
             alert('Your bug died from sleepiness!')
-            clearInterval(timer)
+            document.querySelector('.bug').src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzCc7Ktq4fSdl0OIrtoT30h7NAgVWWPhzMz8LXXSBI2TU5NDwY1Qr8eg0Obh-eaCdMSVU&usqp=CAU"
+            clearInterval(timerHunger) 
+            clearInterval(timerSleepiness)   
+            clearInterval(timerBoredom)   
           } 
-    }, 1000) 
+    }, 4000) 
     sleepinessButton.addEventListener('click', () =>{
         bug.sleep();
         document.body.style.backgroundImage = "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWRNqaYiwPCb5rWeCmsOuEDCh7NL6M2j7N40PLeNU4L_dOmpHk4Y6Qg5wSrZCajFIrbEU&usqp=CAU')"   
@@ -104,15 +116,17 @@ setSleepiness(){
 },
 
 setPlay(){
-        const timer = setInterval(() =>{
-        boredomScore.innerText = bug.boredom
-        bug.boredom --
+        timerBoredom = setInterval(() =>{
+            boredomScore.innerText = bug.boredom
+            bug.boredom --
         if(bug.boredom === 0){
             alert('Your bug died from boredom!')
             document.querySelector('.bug').src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzCc7Ktq4fSdl0OIrtoT30h7NAgVWWPhzMz8LXXSBI2TU5NDwY1Qr8eg0Obh-eaCdMSVU&usqp=CAU"
-            clearInterval(timer)
+            clearInterval(timerHunger) 
+            clearInterval(timerSleepiness)   
+            clearInterval(timerBoredom)  
             }
-    }, 1000)
+    }, 4000)
     playButton.addEventListener('click', () =>{
         bug.play();
         document.body.style.backgroundImage = "url('https://images.unsplash.com/photo-1627655045499-9b1cdc0f25a8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80')"
@@ -121,7 +135,7 @@ setPlay(){
 },
 
 setAgeUp(){
-const timer = setInterval(() =>{
+        const timer = setInterval(() =>{
         ageIncrease.innerText = bug.age
         bug.age++
         if(bug.age == 8){
@@ -132,11 +146,13 @@ const timer = setInterval(() =>{
             alert('your chrysalis is now a butterfly!')
             document.querySelector('.bug').src = "https://png.pngitem.com/pimgs/s/129-1291141_happy-new-year-butterfly-hd-png-download.png"
         }
-        else if(bug.boredom === 0 || bug.hunger === 0 || bug.sleepiness === 0) //stop age once bug dies
+        else if(bug.boredom === 0 || bug.hunger === 0 || bug.sleepiness === 0){    //stop age once bug dies
             clearInterval(timer)
+        } 
+           
+           
 }, 2000)
 },
-
 
 
 //call functions 

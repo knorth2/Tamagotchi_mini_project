@@ -1,13 +1,13 @@
 //pseudoCode
 //Make an alert and prompt to add name of bug and to give rules of game. 
 
-//Event Listeners-Make start button that starts the game/timer?
+//Event Listeners-Make start button that starts the game/timer? 
 
 //Create buttons to keep bug alive, hunger, play, sleep(lights on/off) with a 1-10 scale.  There will also be metrics keeping track of hunger, sleepiness, play/boredom, and age. 
 
 //Create object with functions/methods with if/else if statements?
 
-//Morphing will require bug to stay alive for how long? 120secs? Bug will die if hunger, play, and sleepiness hits 10.
+//Morphing will require bug to stay alive for how long?  Bug will die if hunger, play, and sleepiness hits 0.
 
 //Create morphed bug? 2 or 3 stages with setAge function inside game object?
 
@@ -15,32 +15,16 @@
 
 //Game ends when bug dies. Alert bug has died.
 
-// Do i need Global variables?
-// const startTime = 120;
-// let time = startTime;
-
 
 //Parent Class - instantiate from parent class and make methods
 
-class Character{
+class Bug{
     constructor(name, hunger, sleepiness, boredom, age){
         this.name = name;
         this.hunger = hunger;
         this.sleepiness = sleepiness;
         this.boredom = boredom;
         this.age = age;
-    }
- 
-}
-
-class Bug extends Character{
-    constructor(name, hunger, sleepiness, boredom, age){
-        super(name, hunger, sleepiness, boredom, age)
-        this.name = '';
-        this.hunger = 10;
-        this.sleepiness = 10;
-        this.boredom = 10;
-        this.age = 1;
     }
     feed(){
         this.hunger++
@@ -56,11 +40,11 @@ class Bug extends Character{
         this.name 
     
     }
-    
 }
 
+
 //Create instance
-const bug = new Bug()
+const bug = new Bug('', 10, 10, 10, 1)
 //   console.log(bug)
 
 
@@ -92,12 +76,14 @@ setHunger(){
         bug.hunger --
         if(bug.hunger === 0){
             alert('Your bug died of starvation!')
+            document.querySelector('.bug').src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzCc7Ktq4fSdl0OIrtoT30h7NAgVWWPhzMz8LXXSBI2TU5NDwY1Qr8eg0Obh-eaCdMSVU&usqp=CAU"
             clearInterval(timer)  //How to stop others stop running when one hits 0?
-            }
-    }, 5000)
+        }
+    }, 1000)
     hungerButton.addEventListener('click', () =>{ //put eventlistener outside of setInterval function so it starts counting without having to click the button.
         bug.feed();
-        console.log(bug.hunger)
+        //console.log(bug.hunger)
+        document.body.style.backgroundImage = "url('https://images.unsplash.com/photo-1627655045499-9b1cdc0f25a8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80')"
 })
 },
 
@@ -110,7 +96,7 @@ setSleepiness(){
             alert('Your bug died from sleepiness!')
             clearInterval(timer)
           } 
-    }, 5000) 
+    }, 1000) 
     sleepinessButton.addEventListener('click', () =>{
         bug.sleep();
         document.body.style.backgroundImage = "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWRNqaYiwPCb5rWeCmsOuEDCh7NL6M2j7N40PLeNU4L_dOmpHk4Y6Qg5wSrZCajFIrbEU&usqp=CAU')"   
@@ -123,9 +109,10 @@ setPlay(){
         bug.boredom --
         if(bug.boredom === 0){
             alert('Your bug died from boredom!')
+            document.querySelector('.bug').src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzCc7Ktq4fSdl0OIrtoT30h7NAgVWWPhzMz8LXXSBI2TU5NDwY1Qr8eg0Obh-eaCdMSVU&usqp=CAU"
             clearInterval(timer)
             }
-    }, 5000)
+    }, 1000)
     playButton.addEventListener('click', () =>{
         bug.play();
         document.body.style.backgroundImage = "url('https://images.unsplash.com/photo-1627655045499-9b1cdc0f25a8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80')"
@@ -135,7 +122,7 @@ setPlay(){
 
 setAgeUp(){
 const timer = setInterval(() =>{
-        ageIncrease.innerText = `${bug.age}`
+        ageIncrease.innerText = bug.age
         bug.age++
         if(bug.age == 8){
             alert('your caterpillar is now a chrysalis!')
@@ -149,6 +136,8 @@ const timer = setInterval(() =>{
             clearInterval(timer)
 }, 2000)
 },
+
+
 
 //call functions 
 

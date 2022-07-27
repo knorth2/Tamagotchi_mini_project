@@ -68,11 +68,11 @@ let ageIncrease = document.querySelector('.ageText');
 
 //---Add event listeners to buttons: start, hunger(feed me), sleepiness(nap time), boredom(play time) using variable created above.
 
- //created functions around events and put them in an object for easier accessibility. 
+ //created functions around events and put them in an object for easier accessibility. Even though this didn't make it easier :/
 
 const game = {
 
-    timerHunger: "",        //Created these variables to use as the setInterval method. 
+    timerHunger: "",        //Created these variables to use as the setInterval method to try and stop setInterval since one clearInterval wasn't stopping it.
     timerSleepiness: "",
     timerBoredom: "",
 
@@ -82,7 +82,7 @@ const game = {
             bug.hunger --
         if(bug.hunger === 0){
             alert('Your bug died from starvation!')
-            document.querySelector('.bug').src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzCc7Ktq4fSdl0OIrtoT30h7NAgVWWPhzMz8LXXSBI2TU5NDwY1Qr8eg0Obh-eaCdMSVU&usqp=CAU"
+            document.querySelector('.bug').src = "./images/smash.png"
             clearInterval(timerHunger) 
             clearInterval(timerSleepiness)   
             clearInterval(timerBoredom) 
@@ -103,7 +103,7 @@ const game = {
         
         if(bug.sleepiness === 0){
             alert('Your bug died from sleepiness!')
-            document.querySelector('.bug').src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzCc7Ktq4fSdl0OIrtoT30h7NAgVWWPhzMz8LXXSBI2TU5NDwY1Qr8eg0Obh-eaCdMSVU&usqp=CAU"
+            document.querySelector('.bug').src = "./images/smash.png"
             clearInterval(timerHunger) 
             clearInterval(timerSleepiness)   
             clearInterval(timerBoredom)  
@@ -121,7 +121,7 @@ setPlay(){
             bug.boredom --
         if(bug.boredom === 0){
             alert('Your bug died from boredom!')
-            document.querySelector('.bug').src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzCc7Ktq4fSdl0OIrtoT30h7NAgVWWPhzMz8LXXSBI2TU5NDwY1Qr8eg0Obh-eaCdMSVU&usqp=CAU"
+            document.querySelector('.bug').src = "./images/smash.png"
             clearInterval(timerHunger) 
             clearInterval(timerSleepiness)   
             clearInterval(timerBoredom) 
@@ -140,11 +140,11 @@ setAgeUp(){
         bug.age++
         if(bug.age == 8){
             alert('your caterpillar is now a chrysalis!')
-            document.querySelector('.bug').src = "https://icon2.cleanpng.com/20180604/lbc/kisspng-butterfly-drawing-pupa-coloring-book-5b15945cbeb974.5614540115281408927812.jpg" 
+            document.querySelector('.bug').src = "./images/chrysalis.png" 
         }
         if(bug.age == 15){
             alert('your chrysalis is now a butterfly!')
-            document.querySelector('.bug').src = "https://png.pngitem.com/pimgs/s/129-1291141_happy-new-year-butterfly-hd-png-download.png"
+            document.querySelector('.bug').src = "./images/butterfly.png"
         }
         else if(bug.boredom === 0 || bug.hunger === 0 || bug.sleepiness === 0){    //stop age once bug dies
             clearInterval(timer)

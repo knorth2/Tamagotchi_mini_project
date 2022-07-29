@@ -5,3 +5,5 @@ This mini-project was a homework assignment in my software engineering bootcamp 
 It uses HTML, CSS, and Vanilla JavaScript to create a simple game that simulates Tamagotchi.
 In this game, the user is able to feed, play and nap their own 'bug' and the ultimate goal is to keep it alive!
 Follow the instructions and have fun!
+
+https://knorth2.github.io/Tamagotchi_mini_project/
